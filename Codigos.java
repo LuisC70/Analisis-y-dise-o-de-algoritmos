@@ -43,10 +43,10 @@ public class Codigos {
     }
 
     public static void ejemploLogaritmico(int[] arr, int objetivo) {
-        System.out.println("\nEjemplo O(log n): Búsqueda binaria");
+        System.out.println("\nEjemplo O(log n): Busqueda binaria");
         Arrays.sort(arr); 
         boolean encontrado = busquedaBinaria(arr, objetivo);
-        System.out.println("¿Está el número " + objetivo + "? " + encontrado);
+        System.out.println("¿Esta el numero " + objetivo + "? " + encontrado);
     }
 
     public static void main(String[] args) {
