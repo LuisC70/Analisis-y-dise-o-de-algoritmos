@@ -9,5 +9,8 @@ public class Complejidad {
     }
 }
 
+//Complejidad Temporal (O(1)): Acceder a numeros[2] siempre toma el mismo tiempo, no importa si el arreglo tiene 5 o 1 millón de elementos.
+//Complejidad Espacial (O(1)): Solo se guarda la variable valor, así que no se necesita memoria extra.
+
     
 
