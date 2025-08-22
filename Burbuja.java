@@ -24,7 +24,5 @@ public class Burbuja {
             System.out.print(num + " ");
         }
     }
-}
-
     
-
+}
