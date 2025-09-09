@@ -7,7 +7,7 @@ public class Estilo_Polifasico {
         List<Integer> result = new ArrayList<>();
         int i = 0, j = 0;
 
-        while (i < a.size() && j < b.size()) {
+        while (i < a.size() && j < b.size()) {                             // List<Integer> = una lista dinamica de numeros enteros (objetos Integer).
             if (a.get(i) <= b.get(j)) {
                 result.add(a.get(i));
                 i++;
@@ -16,10 +16,10 @@ public class Estilo_Polifasico {
                 j++;
             }
         }
-
+                                                                             // .get(indice) → devuelve el elemento en la posicion indice.
                                                                              // Añadimos los elementos que sobren
         while (i < a.size()) result.add(a.get(i++));
-        while (j < b.size()) result.add(b.get(j++));
+        while (j < b.size()) result.add(b.get(j++));                         // a.size() devuelve el numero de elementos que hay en la lista.
 
         return result;
     }
