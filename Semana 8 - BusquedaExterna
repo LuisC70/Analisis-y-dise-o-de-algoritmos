@@ -1,0 +1,37 @@
+import java.util.*;
+
+public class BusquedaConIndices {
+    public static void main(String[] args) {
+        // Datos de ejemplo
+        String[] empleados = {
+            "001,Juan,Ingenieria",
+            "002,Maria,Ventas", 
+            "003,Carlos,Ingenieria",
+            "004,Ana,RRHH"
+        };
+        
+        // Construir índice (ID -> posición)
+        Map<String, Integer> indice = new HashMap<>();
+        for (int i = 0; i < empleados.length; i++) {
+            String id = empleados[i].split(",")[0];
+            indice.put(id, i);
+        }
+        
+        // Buscar empleados
+        buscar(empleados, indice, "003");
+        buscar(empleados, indice, "002");
+        buscar(empleados, indice, "005"); // No existe
+    }
+    
+    public static void buscar(String[] datos, Map<String, Integer> indice, String id) {
+        System.out.print("Buscando " + id + ": ");
+        
+        if (indice.containsKey(id)) {
+            int posicion = indice.get(id);
+            String empleado = datos[posicion];
+            System.out.println("ENCONTRADO - " + empleado);
+        } else {
+            System.out.println("NO ENCONTRADO");
+        }
+    }
+}
