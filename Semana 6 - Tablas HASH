@@ -1,0 +1,55 @@
+import java.util.LinkedList;
+
+public class Tabla_HASH {
+    private int tamaño = 5; // tamaño de la tabla
+    private LinkedList<String>[] tabla;
+
+    public Tabla_HASH() {
+        tabla = new LinkedList[tamaño];
+        for (int i = 0; i < tamaño; i++) {
+            tabla[i] = new LinkedList<>();
+        }
+    }
+
+    // Función hash sencilla: convierte palabra en número
+    private int hash(String clave) {
+        return Math.abs(clave.hashCode() % tamaño);
+    }
+
+    // Insertar
+    public void insertar(String clave) {
+        int indice = hash(clave);
+        if (!tabla[indice].contains(clave)) {
+            tabla[indice].add(clave);
+        }
+    }
+
+    // Buscar
+    public boolean buscar(String clave) {
+        int indice = hash(clave);
+        return tabla[indice].contains(clave);
+    }
+
+    // Mostrar tabla
+    public void mostrar() {
+        for (int i = 0; i < tamaño; i++) {
+            System.out.println(i + ": " + tabla[i]);
+        }
+    }
+
+    // Programa principal
+    public static void main(String[] args) {
+        Tabla_HASH hash = new Tabla_HASH();
+
+        hash.insertar("Luis");
+        hash.insertar("Maria");
+        hash.insertar("Juan");
+        hash.insertar("Pedro");
+        hash.insertar("Ana");
+
+        hash.mostrar();
+
+        System.out.println("¿Existe 'Maria'? " + hash.buscar("Maria"));
+        System.out.println("¿Existe 'Carlos'? " + hash.buscar("Carlos"));
+    }
+}
