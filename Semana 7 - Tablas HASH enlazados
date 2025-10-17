@@ -1,0 +1,43 @@
+import java.util.LinkedList;
+
+public class TablaHashSimple {
+    private LinkedList<Integer>[] tabla;
+
+    public TablaHashSimple(int tamaño) {
+        tabla = new LinkedList[tamaño];
+        for (int i = 0; i < tamaño; i++) {
+            tabla[i] = new LinkedList<>();
+        }
+    }
+
+    // Función hash
+    private int hash(int clave) {
+        return clave % tabla.length;
+    }
+
+    // Insertar un valor
+    public void insertar(int clave) {
+        int indice = hash(clave);
+        tabla[indice].add(clave);
+        System.out.println("Insertado " + clave + " en índice " + indice);
+    }
+
+    // Mostrar la tabla
+    public void mostrar() {
+        for (int i = 0; i < tabla.length; i++) {
+            System.out.println("Índice " + i + ": " + tabla[i]);
+        }
+    }
+
+    public static void main(String[] args) {
+        TablaHashSimple tabla = new TablaHashSimple(5);
+
+        tabla.insertar(12);
+        tabla.insertar(7);
+        tabla.insertar(22);
+        tabla.insertar(17);
+
+        System.out.println("\nContenido de la tabla:");
+        tabla.mostrar();
+    }
+}
