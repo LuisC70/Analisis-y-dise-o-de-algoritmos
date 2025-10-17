@@ -1,0 +1,42 @@
+import java.util.*;
+
+public class ListaInvertida {
+    public static void main(String[] args) {
+        // Documentos de ejemplo
+        String[] documentos = {
+            "el gato negro salta alto",
+            "el perro blanco corre rapido",
+            "el gato blanco duerme mucho"
+        };
+        
+        // Construir lista invertida (palabra -> documentos)
+        Map<String, List<String>> listaInvertida = new HashMap<>();
+        for (int i = 0; i < documentos.length; i++) {
+            String docId = "Doc" + (i + 1);
+            String[] palabras = documentos[i].split(" ");
+            
+            for (String palabra : palabras) {
+                if (!listaInvertida.containsKey(palabra)) {
+                    listaInvertida.put(palabra, new ArrayList<>());
+                }
+                listaInvertida.get(palabra).add(docId);
+            }
+        }
+        
+        // Buscar palabras
+        buscar(listaInvertida, "gato");
+        buscar(listaInvertida, "blanco");
+        buscar(listaInvertida, "pez");
+    }
+    
+    public static void buscar(Map<String, List<String>> listaInvertida, String palabra) {
+        System.out.print("Buscando '" + palabra + "': ");
+        
+        if (listaInvertida.containsKey(palabra)) {
+            List<String> documentos = listaInvertida.get(palabra);
+            System.out.println("Encontrado en " + documentos);
+        } else {
+            System.out.println("No encontrado");
+        }
+    }
+}
