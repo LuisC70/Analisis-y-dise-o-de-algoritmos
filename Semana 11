@@ -1,0 +1,43 @@
+// Procedimiento principal del algoritmo Quick Sort
+public static void quickSort(int[] A, int inicio, int fin) {
+
+    if (inicio < fin) {
+
+        // Colocamos el pivote en su posición correcta
+        int p = posicionPivote(A, inicio, fin);
+
+        // Ordenamos los elementos menores
+        quickSort(A, inicio, p - 1);
+
+        // Ordenamos los elementos mayores
+        quickSort(A, p + 1, fin);
+    }
+}
+
+// Procedimiento que organiza el arreglo alrededor del pivote
+public static int posicionPivote(int[] A, int inicio, int fin) {
+
+    int pivote = A[fin];      // Elegimos el ultimo elemento como pivote
+    int i = inicio - 1;       // Posición donde iran los menores
+
+    for (int j = inicio; j < fin; j++) {
+
+        // Si A[j] es menor que el pivote, lo movemos a la izquierda
+        if (A[j] < pivote) {
+            i++;
+            intercambiar(A, i, j);
+        }
+    }
+
+    // Colocamos el pivote en su lugar final
+    intercambiar(A, i + 1, fin);
+
+    return i + 1;  // Retornamos la posición final del pivote
+}
+
+// Procedimiento básico de intercambio
+public static void intercambiar(int[] A, int x, int y) {
+    int aux = A[x];
+    A[x] = A[y];
+    A[y] = aux;
+}
