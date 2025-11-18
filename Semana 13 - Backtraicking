@@ -1,0 +1,22 @@
+public class ConteoCompleto {
+    
+    public static void contar(int numero) {
+        System.out.println("Bajando: " + numero);
+        
+        // Caso base
+        if (numero <= 0) {
+            System.out.println("--- LLEGAMOS AL FONDO ---");
+            return;
+        }
+        
+        // Llamada recursiva
+        contar(numero - 1);
+        
+        System.out.println("Subiendo: " + numero);
+    }
+    
+    public static void main(String[] args) {
+        System.out.println("Recorrido completo de la recursión:");
+        contar(3);
+    }
+}
