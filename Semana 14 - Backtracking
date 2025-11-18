@@ -1,0 +1,44 @@
+import java.util.ArrayList;
+import java.util.List;
+
+public class CombinacionesSimple {
+    
+    // Método recursivo con backtracking
+    public static void encontrarCombinaciones(List<Integer> combinacionActual, 
+                                             int[] numeros, 
+                                             int inicio, 
+                                             List<List<Integer>> resultado) {
+        
+        // Siempre agregar la combinación actual (esto encuentra TODAS las combinaciones)
+        resultado.add(new ArrayList<>(combinacionActual));
+        
+        // Explorar todas las opciones restantes
+        for (int i = inicio; i < numeros.length; i++) {
+            // AGREGAR elemento a la combinación
+            combinacionActual.add(numeros[i]);
+            
+            // LLAMADA RECURSIVA con el siguiente índice
+            encontrarCombinaciones(combinacionActual, numeros, i + 1, resultado);
+            
+            // BACKTRACK: remover el último elemento
+            combinacionActual.remove(combinacionActual.size() - 1);
+        }
+    }
+    
+    public static void main(String[] args) {
+        int[] numeros = {1, 2, 3};
+        List<List<Integer>> todasCombinaciones = new ArrayList<>();
+        
+        System.out.println("Encontrando todas las combinaciones de: {1, 2, 3}");
+        
+        encontrarCombinaciones(new ArrayList<>(), numeros, 0, todasCombinaciones);
+        
+        // Mostrar resultados
+        System.out.println("\nTodas las combinaciones posibles:");
+        for (List<Integer> comb : todasCombinaciones) {
+            System.out.println(comb);
+        }
+        
+        System.out.println("\nTotal de combinaciones: " + todasCombinaciones.size());
+    }
+}
